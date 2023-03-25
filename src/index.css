@@ -3,6 +3,9 @@
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -21,17 +24,16 @@ p {
   margin: 0;
 }
 
-#outlined-basic{
+#outlined-basic {
   width: 350px;
 }
 
-#standard-search{
+#standard-search {
   width: 350px;
 }
 
-.css-hhvo2v-MuiListItem-root:not(:last-child)::after
-{
-  content: "";
+.css-hhvo2v-MuiListItem-root:not(:last-child)::after {
+  content: '';
   display: block;
   position: absolute;
   bottom: 0px;
@@ -39,5 +41,4 @@ p {
   right: 0;
   height: 1px;
   background-color: #adaaaa;
-  
 }

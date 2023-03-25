@@ -7,8 +7,15 @@ import EmailIcon from '@mui/icons-material/Email';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import { Input } from '@mui/joy';
 import Button from '@mui/material/Button';
+import { useState } from 'react';
 
 export const Registration = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <Container>
@@ -29,9 +36,13 @@ export const Registration = () => {
               <Input
                 startDecorator={<KeyRoundedIcon />}
                 placeholder="Password"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 endDecorator={
-                  <IconButton color="neutral" size="sm">
+                  <IconButton
+                    color="neutral"
+                    size="sm"
+                    onClick={toggleShowPassword}
+                  >
                     <VisibilityRoundedIcon />
                   </IconButton>
                 }
