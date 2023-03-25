@@ -1,27 +1,25 @@
 import React from 'react';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
+import { Route, Routes } from 'react-router-dom';
+import { PAGE_NAMES } from './Router/path';
+import { MainLayouts } from './Layouts/MainLayouts';
+import { Homepage } from 'pages/Homepage/Homepage';
+import { Contacts } from 'pages/Contacts/Contacts';
+import { Registration } from './Registration/Registration';
+import { Login } from './Login/Login';
 
-import {
-  SectionWrap,
-  Heading,
-  ContactsTitle,
-} from './ContactForm/ContactForm.styled';
-import { Filter } from './Filter/Filter';
+// const Contacts = lazy(() => import('pages/Contacts/Contacts'));
 
 export const App = () => {
-
-   return (
+  return (
     <>
-      <SectionWrap>
-        <Heading>Phonebook</Heading>
-        <ContactForm />
-      </SectionWrap>
-      <SectionWrap>
-        <ContactsTitle>Contacts</ContactsTitle>
-        <Filter />
-        <ContactList />
-      </SectionWrap>
+      <Routes>
+        <Route path={PAGE_NAMES.homepage} element={<MainLayouts />}>
+          <Route index path={PAGE_NAMES.homepage} element={<Homepage />} />
+          <Route path={PAGE_NAMES.contacts} element={<Contacts />} />
+          <Route path={PAGE_NAMES.signup} element={<Registration />} />
+          <Route path={PAGE_NAMES.login} element={<Login />} />
+        </Route>
+      </Routes>
     </>
   );
 };
