@@ -21,10 +21,10 @@ export const FilterInput = styled.input`
   }
 `;
 export const FilterLabel = styled.label`
+  font-weight: 700;
   font-size: 16px;
   line-height: 1.67;
   letter-spacing: 0.01em;
-  font-family: 'Times New Roman', Times, serif;
   color: #757575;
   display: block;
 `;

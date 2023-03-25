@@ -63,6 +63,7 @@ export const ContactList = () => {
                   />
                 </ListItemAvatar>
                 <ListItemText
+                  sx={{ fontSize: '36px' }}
                   primary={contact.name}
                   secondary={
                     <React.Fragment>

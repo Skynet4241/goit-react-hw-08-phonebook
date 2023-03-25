@@ -6,12 +6,12 @@ import PeopleIcon from '@mui/icons-material/People';
 import EmailIcon from '@mui/icons-material/Email';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import { Input } from '@mui/joy';
-import Button from '@mui/material/Button';
 import { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRegistrationMutation } from 'redux/auth-operations';
+import { FormButton } from './Registration.styled';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -47,7 +47,7 @@ export const Registration = () => {
       <Container>
         <div>
           <form onSubmit={submitHandler}>
-            <h1>Registration</h1>
+            <h2>Registration</h2>
 
             <JoyBox
               sx={{
@@ -91,14 +91,10 @@ export const Registration = () => {
                 title="Password should be at least 8 characters"
               />
             </JoyBox>
-            <Button
-              variant="contained"
-              disableElevation
-              type="submit"
-              onSubmit={submitHandler}
-            >
+            <FormButton type="submit" onSubmit={submitHandler}>
               Registration
-            </Button>
+            </FormButton>
+
             <ToastContainer
               position="top-center"
               autoClose={5000}

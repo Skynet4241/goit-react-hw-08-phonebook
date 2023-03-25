@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterStyle = styled.footer`
-  background-color: #434040;
+  background: #c5010a;
   color: #fff;
   padding: 16px;
   margin-top: auto;
@@ -9,5 +9,5 @@ export const FooterStyle = styled.footer`
 
 export const FooterHeading = styled.h2`
   font-size: 16px;
-  margin: 0;
+  margin: 0 auto;
 `;

@@ -6,9 +6,10 @@ export const ContactsForm = styled.form`
   flex-direction: column;
   align-items: center;
   row-gap: 10px;
-  width: 500px;
+  width: 100%;
   margin: 0 auto;
   margin-bottom: 30px;
+  gap: 30px;
 `;
 
 export const ContactFormLabel = styled.label`

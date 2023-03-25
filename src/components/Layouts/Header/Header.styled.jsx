@@ -4,15 +4,34 @@ import styled from 'styled-components';
 export const HeaderStyle = styled.header`
   display: flex;
   align-items: center;
-  background-color: #434040;
+  background: linear-gradient(
+    89.96deg,
+    #000000 0.04%,
+    rgba(255, 255, 255, 0) 99.97%
+  );
   color: #fff;
-  height: 60px;
+  height: 80px;
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
+
+export const HeaderBlock = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const HeaderLogo = styled(NavLink)`
+  text-decoration: none;
+  color: #c5010a;
+  margin-right: 40px;
+  font-weight: 700;
+  font-size: 16px;
+`;
+
 export const HeaderNav = styled.nav`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 export const LeftTabs = styled.div`
   display: flex;
@@ -21,7 +40,9 @@ export const LeftTabs = styled.div`
 export const TabLink = styled(NavLink)`
   color: #fff;
   text-decoration: none;
-
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.9;
   &:not(:last-child) {
     margin-right: 40px;
   }
@@ -37,23 +58,34 @@ export const RightTabs = styled.div`
   display: flex;
   align-items: center;
 `;
-
+export const NavButton = styled(NavLink)`
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+`;
 export const Button = styled.button`
+  width: 128px;
+  height: 48px;
   display: inline-block;
-  margin-right: 20px;
-  padding: 5px 15px;
+
+  font-weight: 700;
+  font-size: 16px;
   color: ${props => (props.isActive ? '#ffffff' : '#333')};
-  background-color: ${props => (props.isActive ? '#8b2d75' : '#b2dfec')};
+  /* background-color: ${props => (props.isActive ? '#8b2d75' : '#FA3C45')}; */
+  background-image: ${props =>
+    props.isActive
+      ? 'linear-gradient(to bottom right, #e98ed4, #562e67)'
+      : 'linear-gradient(to bottom right, #FA3C45, #FFB199)'};
   border: 2px solid #333;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 16px;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
-    background-color: #eee;
-    color: #333;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   }
 `;

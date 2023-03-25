@@ -32,6 +32,9 @@ export const ContactForm = () => {
     <>
       <ContactsForm onSubmit={handleFormSubmit}>
         <TextField
+          sx={{
+            width: '100%',
+          }}
           onChange={e => setName(e.target.value)}
           type="text"
           id="outlined-basic"
@@ -44,6 +47,9 @@ export const ContactForm = () => {
           variant="outlined"
         />
         <TextField
+          sx={{
+            width: '100%',
+          }}
           type="tel"
           id="outlined-basic"
           name="number"

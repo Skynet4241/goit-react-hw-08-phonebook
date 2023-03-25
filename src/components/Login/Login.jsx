@@ -5,8 +5,8 @@ import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
 import EmailIcon from '@mui/icons-material/Email';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import { Input } from '@mui/joy';
-import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { FormButton } from 'components/Registration/Registration.styled';
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +20,7 @@ export const Login = () => {
       <Container>
         <div>
           <form>
-            <h1>Login</h1>
+            <h2>Login</h2>
 
             <JoyBox
               sx={{
@@ -46,9 +46,8 @@ export const Login = () => {
                 }
               />
             </JoyBox>
-            <Button variant="contained" disableElevation type="submit">
-              Log In
-            </Button>
+
+            <FormButton type="submit">Log In</FormButton>
           </form>
         </div>
       </Container>
