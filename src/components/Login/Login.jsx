@@ -46,7 +46,7 @@ export const Login = () => {
                 }
               />
             </JoyBox>
-            <Button variant="contained" disableElevation>
+            <Button variant="contained" disableElevation type="submit">
               Log In
             </Button>
           </form>

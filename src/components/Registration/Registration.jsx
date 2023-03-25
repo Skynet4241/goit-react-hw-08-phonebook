@@ -8,9 +8,35 @@ import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import { Input } from '@mui/joy';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRegistrationMutation } from 'redux/auth-operations';
+
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [registration] = useRegistrationMutation();
+
+  const submitHandler = async e => {
+    e.preventDefault();
+    const { name, email, password } = e.target.elements;
+
+    const result = await registration({
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    });
+
+    if (result.error) {
+      toast.error(
+        'Incorrect data input. Check that all fields are filled correctly or email is already registered.'
+      );
+    } else {
+      toast.success('Registration completed successfully');
+    }
+  };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -20,7 +46,7 @@ export const Registration = () => {
     <>
       <Container>
         <div>
-          <form>
+          <form onSubmit={submitHandler}>
             <h1>Registration</h1>
 
             <JoyBox
@@ -31,12 +57,28 @@ export const Registration = () => {
                 width: '400px',
               }}
             >
-              <Input startDecorator={<PeopleIcon />} placeholder="Name" />
-              <Input startDecorator={<EmailIcon />} placeholder="Email" />
+              <Input
+                startDecorator={<PeopleIcon />}
+                name="name"
+                placeholder="Name"
+                pattern="/^[A-Za-z]+$/i"
+                required
+              />
+              <Input
+                startDecorator={<EmailIcon />}
+                type="email"
+                name="email"
+                placeholder="Email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                required
+              />
               <Input
                 startDecorator={<KeyRoundedIcon />}
+                name="password"
                 placeholder="Password"
                 type={showPassword ? 'text' : 'password'}
+                pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/"
+                required
                 endDecorator={
                   <IconButton
                     color="neutral"
@@ -46,11 +88,29 @@ export const Registration = () => {
                     <VisibilityRoundedIcon />
                   </IconButton>
                 }
+                title="Password should be at least 8 characters"
               />
             </JoyBox>
-            <Button variant="contained" disableElevation>
+            <Button
+              variant="contained"
+              disableElevation
+              type="submit"
+              onSubmit={submitHandler}
+            >
               Registration
             </Button>
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
           </form>
         </div>
       </Container>
