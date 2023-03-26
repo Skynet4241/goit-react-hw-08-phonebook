@@ -87,7 +87,7 @@ export const Header = () => {
                         <img
                           src={avatar}
                           alt="Avatar icon"
-                          width="40"
+                          width="35"
                           height="40"
                         />
                         <p>{userInfo.data.email}</p>
