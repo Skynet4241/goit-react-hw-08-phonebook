@@ -39,7 +39,7 @@ export const ContactList = () => {
           }}
         >
           {error ? (
-            <>Oh no, there was an error</>
+            <p>Oh no, We could not find your contacts</p>
           ) : isLoading ? (
             <Wrap>
               <ThreeDots
