@@ -94,3 +94,9 @@ export const Button = styled.button`
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   }
 `;
+
+export const UserInfoWrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
