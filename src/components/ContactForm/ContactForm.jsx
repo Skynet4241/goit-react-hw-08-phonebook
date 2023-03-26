@@ -33,6 +33,7 @@ export const ContactForm = () => {
       <ContactsForm onSubmit={handleFormSubmit}>
         <TextField
           sx={{
+            maxWidth: '350px',
             width: '100%',
           }}
           onChange={e => setName(e.target.value)}
@@ -48,6 +49,7 @@ export const ContactForm = () => {
         />
         <TextField
           sx={{
+            maxWidth: '350px',
             width: '100%',
           }}
           type="tel"
@@ -61,7 +63,6 @@ export const ContactForm = () => {
           variant="outlined"
           onChange={e => setPhone(e.target.value)}
         />
-
         <ContactFormBtn>
           {isLoading ? (
             <ThreeDots

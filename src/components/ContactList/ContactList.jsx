@@ -36,7 +36,6 @@ export const ContactList = () => {
           sx={{
             width: 400,
             maxWidth: 460,
-            bgcolor: 'background.paper',
           }}
         >
           {error ? (
@@ -77,7 +76,6 @@ export const ContactList = () => {
                     </React.Fragment>
                   }
                 />
-
                 <Button
                   sx={{
                     top: '10px',

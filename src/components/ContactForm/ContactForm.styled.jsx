@@ -22,22 +22,21 @@ export const ContactFormLabel = styled.label`
 `;
 
 export const ContactFormBtn = styled.button`
+  width: 180px;
+  height: 56px;
+  background: #fa3c45;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
   font-size: 16px;
-  font-weight: 600px;
-  font-family: 'Times New Roman', Times, serif;
-  height: 40px;
-  max-width: 150px;
-  padding: 0 20px;
-  color: white;
-  background-color: #2196f3;
-  border-color: transparent;
-  border-radius: 4px;
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
-  cursor: pointer;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.9;
+  border: none;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
   &:hover,
   &:focus {
-    background-color: #0b5089;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
   }
 `;

@@ -17,11 +17,8 @@ import {
 
 export const Header = () => {
   const [activeButton, setActiveButton] = useState('');
-
   const { isAuth, localLogOut } = useUser();
-
   const [logout] = useLogoutMutation();
-  console.log(isAuth);
 
   const handleButtonClick = event => {
     setActiveButton(event.target.dataset.action);
@@ -81,13 +78,7 @@ export const Header = () => {
                 )}
                 {isAuth && (
                   <NavButton to={PAGE_NAMES.homepage}>
-                    <Button
-                      // isActive={activeButton === 'login'}
-                      // data-action="login"
-                      onClick={handleLogOutClick}
-                    >
-                      Log Out
-                    </Button>
+                    <Button onClick={handleLogOutClick}>Log Out</Button>
                   </NavButton>
                 )}
               </RightTabs>

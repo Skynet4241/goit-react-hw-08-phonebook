@@ -1,4 +1,3 @@
-import { Container } from 'utils/Container';
 import { Box as JoyBox } from '@mui/joy';
 import IconButton from '@mui/joy/IconButton';
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
@@ -11,7 +10,14 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRegistrationMutation } from 'redux/auth-operations';
-import { FormButton } from './Registration.styled';
+import {
+  FormButton,
+  RegistrForm,
+  RegistrFormTitle,
+  RegistrFormWrap,
+} from './Registration.styled';
+import { RegistrButton } from 'components/Login/Login.styled';
+import { PAGE_NAMES } from 'components/Router/path';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -44,72 +50,71 @@ export const Registration = () => {
 
   return (
     <>
-      <Container>
-        <div>
-          <form onSubmit={submitHandler}>
-            <h2>Registration</h2>
-
-            <JoyBox
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 2,
-                width: '400px',
-              }}
-            >
-              <Input
-                startDecorator={<PeopleIcon />}
-                name="name"
-                placeholder="Name"
-                pattern="/^[A-Za-z]+$/i"
-                required
-              />
-              <Input
-                startDecorator={<EmailIcon />}
-                type="email"
-                name="email"
-                placeholder="Email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                required
-              />
-              <Input
-                startDecorator={<KeyRoundedIcon />}
-                name="password"
-                placeholder="Password"
-                type={showPassword ? 'text' : 'password'}
-                pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/"
-                required
-                endDecorator={
-                  <IconButton
-                    color="neutral"
-                    size="sm"
-                    onClick={toggleShowPassword}
-                  >
-                    <VisibilityRoundedIcon />
-                  </IconButton>
-                }
-                title="Password should be at least 8 characters"
-              />
-            </JoyBox>
-            <FormButton type="submit" onSubmit={submitHandler}>
-              Registration
-            </FormButton>
-
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
+      <RegistrFormWrap>
+        <RegistrForm onSubmit={submitHandler}>
+          <RegistrFormTitle>Registration</RegistrFormTitle>
+          <JoyBox
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+              width: '400px',
+            }}
+          >
+            <Input
+              startDecorator={<PeopleIcon />}
+              name="name"
+              placeholder="Name"
+              pattern="/^[A-Za-z]+$/i"
+              required
             />
-          </form>
-        </div>
-      </Container>
+            <Input
+              startDecorator={<EmailIcon />}
+              type="email"
+              name="email"
+              placeholder="Email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              required
+            />
+            <Input
+              startDecorator={<KeyRoundedIcon />}
+              name="password"
+              placeholder="Password"
+              type={showPassword ? 'text' : 'password'}
+              pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/"
+              required
+              endDecorator={
+                <IconButton
+                  color="neutral"
+                  size="sm"
+                  onClick={toggleShowPassword}
+                >
+                  <VisibilityRoundedIcon />
+                </IconButton>
+              }
+              title="Password should be at least 8 characters"
+            />
+          </JoyBox>
+          <FormButton type="submit" onSubmit={submitHandler}>
+            Registration
+          </FormButton>
+          <RegistrButton to={PAGE_NAMES.login}>
+            Already Have an account? Sign In
+          </RegistrButton>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
+        </RegistrForm>
+      </RegistrFormWrap>
     </>
   );
 };

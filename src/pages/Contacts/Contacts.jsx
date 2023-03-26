@@ -1,31 +1,32 @@
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
-
 import { Filter } from 'components/Filter/Filter';
-
 import {
   Block,
   ContactsListBlock,
   ContactsTitle,
   Heading,
   SectionWrap,
+  Wrap,
 } from './Contacts.styled';
 
 export const Contacts = () => {
   return (
     <>
       <Block>
-        <SectionWrap>
-          <Heading>Contact Form</Heading>
-          <ContactForm />
-        </SectionWrap>
-        <ContactsListBlock>
-          <ContactsTitle>Contacts</ContactsTitle>
+        <Filter />
+        <Wrap>
           <SectionWrap>
-            <Filter />
-            <ContactList />
+            <Heading>Contact Form</Heading>
+            <ContactForm />
           </SectionWrap>
-        </ContactsListBlock>
+          <ContactsListBlock>
+            <ContactsTitle>Contacts</ContactsTitle>
+            <SectionWrap>
+              <ContactList />
+            </SectionWrap>
+          </ContactsListBlock>
+        </Wrap>
       </Block>
     </>
   );

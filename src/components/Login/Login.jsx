@@ -1,4 +1,3 @@
-import { Container } from 'utils/Container';
 import { Box as JoyBox } from '@mui/joy';
 import IconButton from '@mui/joy/IconButton';
 import KeyRoundedIcon from '@mui/icons-material/KeyRounded';
@@ -11,12 +10,20 @@ import { useLoginMutation } from 'redux/auth-operations';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from 'components/hooks/useUser';
+import {
+  LoginForm,
+  LoginTitle,
+  LoginWrap,
+  RegistrButton,
+} from './Login.styled';
+import { PAGE_NAMES } from 'components/Router/path';
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const { logIn } = useUser();
+
   const submitHandler = async e => {
     e.preventDefault();
     const { email, password } = e.target.elements;
@@ -30,9 +37,9 @@ export const Login = () => {
       toast.error('The username or password is incorrect.');
     } else {
       toast.success('You have successfully logged on');
-      // localStorage.setItem('jwt', result.data.token);
       logIn(result.data.token);
       navigate('/contacts');
+      window.location.reload();
     }
   };
   const toggleShowPassword = () => {
@@ -41,57 +48,58 @@ export const Login = () => {
 
   return (
     <>
-      <Container>
-        <div>
-          <form onSubmit={submitHandler}>
-            <h2>Login</h2>
+      <LoginWrap>
+        <LoginForm onSubmit={submitHandler}>
+          <LoginTitle>Log In</LoginTitle>
 
-            <JoyBox
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 2,
-                width: '400px',
-              }}
-            >
-              <Input
-                startDecorator={<EmailIcon />}
-                placeholder="Email"
-                name="email"
-              />
-              <Input
-                startDecorator={<KeyRoundedIcon />}
-                placeholder="Password"
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                endDecorator={
-                  <IconButton
-                    color="neutral"
-                    size="sm"
-                    onClick={toggleShowPassword}
-                  >
-                    <VisibilityRoundedIcon />
-                  </IconButton>
-                }
-              />
-            </JoyBox>
-
-            <FormButton type="submit">Log In</FormButton>
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
+          <JoyBox
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+              width: '400px',
+            }}
+          >
+            <Input
+              startDecorator={<EmailIcon />}
+              placeholder="Email"
+              name="email"
             />
-          </form>
-        </div>
-      </Container>
+            <Input
+              startDecorator={<KeyRoundedIcon />}
+              placeholder="Password"
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              endDecorator={
+                <IconButton
+                  color="neutral"
+                  size="sm"
+                  onClick={toggleShowPassword}
+                >
+                  <VisibilityRoundedIcon />
+                </IconButton>
+              }
+            />
+          </JoyBox>
+
+          <FormButton type="submit">Log In</FormButton>
+          <RegistrButton to={PAGE_NAMES.register}>
+            Register an account here
+          </RegistrButton>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
+        </LoginForm>
+      </LoginWrap>
     </>
   );
 };

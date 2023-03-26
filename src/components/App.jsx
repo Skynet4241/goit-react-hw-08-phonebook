@@ -8,8 +8,7 @@ import { Registration } from './Registration/Registration';
 import { Login } from './Login/Login';
 import { PrivateRouter } from './PrivateRouter/PrivateRouter';
 import { PublicRouter } from './PublicRouter/PublicRouter';
-
-// const Contacts = lazy(() => import('pages/Contacts/Contacts'));
+import { ErrorPage } from 'pages/ErrorPage';
 
 export const App = () => {
   return (
@@ -41,6 +40,7 @@ export const App = () => {
               </PublicRouter>
             }
           />
+          <Route path="/*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </>

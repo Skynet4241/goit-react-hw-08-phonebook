@@ -25,7 +25,7 @@ export const HeaderLogo = styled(NavLink)`
   color: #c5010a;
   margin-right: 40px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 32px;
 `;
 
 export const HeaderNav = styled.nav`
@@ -43,6 +43,7 @@ export const TabLink = styled(NavLink)`
   font-weight: 700;
   font-size: 16px;
   line-height: 1.9;
+  transition: color 0.3s ease-in-out;
   &:not(:last-child) {
     margin-right: 40px;
   }
@@ -51,6 +52,10 @@ export const TabLink = styled(NavLink)`
     border-bottom: 2px solid #fff;
     padding-bottom: 6px;
     margin-bottom: -6px;
+  }
+  &:hover,
+  &:focus {
+    color: #f1b9a8;
   }
 `;
 
@@ -71,7 +76,6 @@ export const Button = styled.button`
   font-weight: 700;
   font-size: 16px;
   color: ${props => (props.isActive ? '#ffffff' : '#333')};
-  /* background-color: ${props => (props.isActive ? '#8b2d75' : '#FA3C45')}; */
   background-image: ${props =>
     props.isActive
       ? 'linear-gradient(to bottom right, #e98ed4, #562e67)'
@@ -84,7 +88,8 @@ export const Button = styled.button`
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.05);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   }
