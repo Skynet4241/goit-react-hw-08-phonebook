@@ -7,6 +7,7 @@ import {
   HomepageTitle,
   HomepageWrap,
 } from './Homepage.styled';
+import HomeImage from 'images/phonebook.jpg';
 
 export const Homepage = () => {
   return (
@@ -31,7 +32,7 @@ export const Homepage = () => {
           </HomepageTextBlock>
           <HomepageBlock>
             <HomepageImage
-              src="https://i.pinimg.com/564x/a7/d9/a0/a7d9a0e3ca668816c7f915e7ac50c91d.jpg"
+              src={HomeImage}
               alt="Phonebook"
               width="300"
               height="400"

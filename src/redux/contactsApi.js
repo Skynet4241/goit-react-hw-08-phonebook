@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const API_ENDPOINT = '/contacts';
-const BASE_URL = 'https://641444da727d1c0df005d679.mockapi.io';
+const BASE_URL = 'https://connections-api.herokuapp.com';
+const jwt = localStorage.getItem('jwt');
 
 export const contactApi = createApi({
   reducerPath: 'contacts',
@@ -11,7 +12,10 @@ export const contactApi = createApi({
   tagTypes: ['Contacts'],
   endpoints: builder => ({
     fetchContacts: builder.query({
-      query: () => API_ENDPOINT,
+      query: body => ({
+        url: API_ENDPOINT,
+        headers: { Authorization: jwt },
+      }),
       providesTags: ['Contacts'],
     }),
 
@@ -21,6 +25,7 @@ export const contactApi = createApi({
           url: API_ENDPOINT,
           method: 'POST',
           body,
+          headers: { Authorization: `Bearer ${jwt}` },
         };
       },
       invalidatesTags: ['Contacts'],
@@ -31,6 +36,7 @@ export const contactApi = createApi({
         return {
           url: `${API_ENDPOINT}/${id}`,
           method: 'DELETE',
+          headers: { Authorization: `Bearer ${jwt}` },
         };
       },
       invalidatesTags: ['Contacts'],

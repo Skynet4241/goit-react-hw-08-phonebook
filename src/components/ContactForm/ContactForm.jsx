@@ -23,7 +23,7 @@ export const ContactForm = () => {
       return;
     }
 
-    addContact({ name, phone });
+    addContact({ name: name, number: phone });
     setName('');
     setPhone('');
   };

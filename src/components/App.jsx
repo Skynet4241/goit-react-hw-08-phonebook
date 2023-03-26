@@ -6,6 +6,8 @@ import { Homepage } from 'pages/Homepage/Homepage';
 import { Contacts } from 'pages/Contacts/Contacts';
 import { Registration } from './Registration/Registration';
 import { Login } from './Login/Login';
+import { PrivateRouter } from './PrivateRouter/PrivateRouter';
+import { PublicRouter } from './PublicRouter/PublicRouter';
 
 // const Contacts = lazy(() => import('pages/Contacts/Contacts'));
 
@@ -15,9 +17,30 @@ export const App = () => {
       <Routes>
         <Route path={PAGE_NAMES.homepage} element={<MainLayouts />}>
           <Route index path={PAGE_NAMES.homepage} element={<Homepage />} />
-          <Route path={PAGE_NAMES.contacts} element={<Contacts />} />
-          <Route path={PAGE_NAMES.register} element={<Registration />} />
-          <Route path={PAGE_NAMES.login} element={<Login />} />
+          <Route
+            path={PAGE_NAMES.contacts}
+            element={
+              <PrivateRouter>
+                <Contacts />
+              </PrivateRouter>
+            }
+          />
+          <Route
+            path={PAGE_NAMES.register}
+            element={
+              <PublicRouter>
+                <Registration />
+              </PublicRouter>
+            }
+          />
+          <Route
+            path={PAGE_NAMES.login}
+            element={
+              <PublicRouter>
+                <Login />
+              </PublicRouter>
+            }
+          />
         </Route>
       </Routes>
     </>

@@ -58,8 +58,7 @@ export const ContactList = () => {
                 <ListItemAvatar>
                   <Avatar
                     alt={contact.name}
-                    // src="https://cdn-icons-png.flaticon.com/512/5480/5480725.png"
-                    src={contact.avatar}
+                    src="https://cdn-icons-png.flaticon.com/512/5480/5480725.png"
                   />
                 </ListItemAvatar>
                 <ListItemText
@@ -73,7 +72,7 @@ export const ContactList = () => {
                         variant="body2"
                         color="text.primary"
                       >
-                        {contact.phone}
+                        {contact.number}
                       </Typography>
                     </React.Fragment>
                   }

@@ -105,7 +105,7 @@ export const Registration = () => {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-              theme="light"
+              theme="colored"
             />
           </form>
         </div>

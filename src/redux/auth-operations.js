@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const BASE_URL = 'https://connections-api.herokuapp.com';
+const jwt = localStorage.getItem('jwt');
 
-const registrationApi = createApi({
+const authenticationApi = createApi({
   reducerPath: 'registrationApi',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: builder => ({
@@ -13,8 +14,24 @@ const registrationApi = createApi({
         body,
       }),
     }),
+    login: builder.mutation({
+      query: body => ({
+        url: '/users/login',
+        method: 'POST',
+        body,
+      }),
+    }),
+    logout: builder.mutation({
+      query: body => ({
+        url: '/users/logout',
+        method: 'POST',
+        body,
+        headers: { Authorization: `Bearer ${jwt}` },
+      }),
+    }),
   }),
 });
 
-export const { useRegistrationMutation } = registrationApi;
-export default registrationApi;
+export const { useRegistrationMutation, useLoginMutation, useLogoutMutation } =
+  authenticationApi;
+export default authenticationApi;
